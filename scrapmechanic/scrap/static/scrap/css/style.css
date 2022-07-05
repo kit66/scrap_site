@@ -237,8 +237,7 @@ contentblock a{
     font-size: small;
     opacity: 60%;
 }
-.comment text{
-}
+
 
 .com_forma{
     color: aliceblue;
@@ -246,4 +245,10 @@ contentblock a{
 
 .urls_com{
     color:aliceblue
+}
+
+.main_image{
+    width: 800px;
+    margin-left: 150px;
+    margin-top: 40px;
 }
