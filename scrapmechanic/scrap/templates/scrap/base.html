@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link  rel="stylesheet" href="{% static 'scrap/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <script src="{% static 'scrap/js/script.js' %}"></script>
+</head>
+<body>
+
+<!-- заголовок -->
+<header class="sky" >
+
+      <span class="user">  {% if request.user.is_authenticated %}
+    <name> {{user.username}} здарова!!!</name> <a class="txt" href="{% url 'logout' %}"> Выйти </a>
+{% else %}
+    <a class="txt" href="{% url 'register' %}" >Регистрация</a>|<a class="txt" href="{% url 'login' %}">Логин</a>
+    {% endif %}
+</span>
+    <center><a href="{% url 'mainpage' %}"><img class="" src="{% static 'scrap/img/logo.png' %}"></a></center>
+
+
+
+</header>
+
+<!-- стены и главный блок-->
+
+    <img class="walleft" src="{% static 'scrap/img/StenkaLeft.png' %}" alt="">
+    <img class="wallright" src="{% static 'scrap/img/StenkaRight.png' %}" alt="">
+
+{% block main %}
+
+{% endblock main %}
+
+
+
+
+{% block content %}
+{% endblock content %}
+</body>
+</html>

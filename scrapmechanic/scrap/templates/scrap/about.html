@@ -1,0 +1,69 @@
+{% extends 'scrap/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="menublock">
+        <div class="menu"><img class="image" src="{% static 'scrap/img/constzone.png' %}" alt="констракшон зон">
+        <a class="ref"  href="{% url 'mods' %}">Моды</a>
+        <a class="ref" href="#">враждебные мобы</a>
+        <a class="ref" href="#">дружелюбные мобы</a>
+        <a class="ref" href="#">генерация</a>
+        </div>
+    {% with comments.count as total_comments %}
+    <h2>
+         комментарии. Всего: {{ total_comments }}
+    </h2>
+{% endwith %}
+        <div class="comments">
+
+
+
+        {% for comment in comments %}
+    <div class="comment"><div class="com_block">
+        <p class="info">
+            {{ comment.name }}
+        </p>
+        <text>{{ comment.body|linebreaks }}</text> <data>{{ comment.created }}</data></div>
+
+    </div>
+{% empty %}
+    <p>Оставьте первый комментарий под этим модом!</p>
+{% endfor %}
+
+
+
+    </div>
+    {% if request.user.is_authenticated %}
+
+    <div class="com_forma">
+    <h2>Добавить комментарий</h2>
+    <form  method="post">
+        {% csrf_token %}
+
+         {% for f in comment_form %}
+     <p class> {{f}}   </p>
+     <div class="errors">{{f.errors}}</div>
+
+        {% endfor %}
+        <p><input type="submit" value="добавить"></p>
+    </form></div>
+
+    {% else %}
+<div class="com_forma">
+    <h2> Чтобы оставлять комментарии нужно войти в систему</h2>
+</div>
+    {% endif %}
+</div>
+
+
+<div class="title"><h1>{{post.title}}</h1></div>
+<div class="contentblock">
+
+        <p> <img class="mod_img" src="{{post.img.url}}" alt="mod img">
+                {{post.content}}
+        </p>
+</div>
+
+
+{% endblock main %}

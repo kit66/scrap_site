@@ -1,0 +1,26 @@
+{% extends 'scrap/base.html' %}
+{% load static %}
+
+{% block main %}
+
+
+<div   class="menublock">
+        <div class="menu"> <img class="image" src="{% static 'scrap/img/constzone.png' %}" alt="констракшон зон">
+        <a class="ref"  href="{% url 'mods' %}">Моды</a>
+        <a class="ref" href="#">враждебные мобы</a>
+        <a class="ref" href="#">дружелюбные мобы</a>
+        <a class="ref" href="#">генерация</a>
+        </div>
+</div>
+<div class="title"><h1>Моды</h1></div>
+<div class="contentblock">
+        {% for p in object_list %}
+        <a href="{{ p.get_absolute_url }}">
+                <div class="modblock">
+                <img src="{{p.img.url}}" alt="картинка мода"><h1> {{p.title}}</h1><h2>от {{p.creator}} <div>4.5★</div></h2>
+
+                </div>
+        </a>
+        {% endfor %}
+</div>
+{% endblock main %}

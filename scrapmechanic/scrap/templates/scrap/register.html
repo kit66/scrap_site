@@ -1,0 +1,14 @@
+{% extends 'scrap/base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="reg">Регистрация</div>
+ <form class ='forma'  method="post">
+     {% csrf_token %}
+     {% for f in form %}
+     <p> {{f}}   </p>
+     <div class="errors">{{f.errors}}</div>
+     {% endfor %}
+     <button type="submit" class="submit"> регистрация</button>
+ </form>
+{% endblock main %}

@@ -1,0 +1,16 @@
+{% extends 'scrap/base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="reg">Вход</div>
+ <form method="post">
+     {% csrf_token %}
+
+     <div> {{form.non_field_errors}}</div>
+     {% for f in form %}
+     <p> {{f}}  </p>
+     <div class="errors">{{f.errors}}</div>
+     {% endfor %}
+     <button type="submit" class="submit"> вход</button>
+ </form>
+{% endblock main %}
